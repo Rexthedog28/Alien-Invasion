@@ -36,19 +36,19 @@ pip install pygame
 ```
 ---
 
-##🚀 Getting Started
-###Clone the repository
+## 🚀 Getting Started
+### Clone the repository
 ```bash
 git clone https://github.com/Rexthedog28/alien-invasion.git
 cd alien-invasion
 ```
-###Run the Game
+### Run the Game
 ```bash
 python alien_invasion.py
 ```
 ---
 
-##🙌 Acknowledgments
+## 🙌 Acknowledgments
 Inspired by the Alien Invasion project from Python Crash Course by Eric Matthes, with personal additions and improvements.
 
 ---
