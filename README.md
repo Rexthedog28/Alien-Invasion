@@ -1,6 +1,6 @@
 # 👾 Alien Invasion (Pygame Edition)
 
-A classic arcade-style shooting game built with [Pygame](https://www.pygame.org/). You control a spaceship and try to shoot down waves of aliens before they reach the bottom of the screen.
+A simple arcade-style shooting game built with [Pygame](https://www.pygame.org/). You control a spaceship and try to shoot down waves of aliens before they reach the bottom of the screen.
 
 ---
 
