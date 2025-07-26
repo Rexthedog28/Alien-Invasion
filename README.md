@@ -14,16 +14,6 @@ A simple arcade-style shooting game built with [Pygame](https://www.pygame.org/)
 
 ---
 
-## 🎮 Features
-
-- Player-controlled spaceship with left/right movement
-- Bullet shooting system with collision detection
-- Multiple rows of alien enemies moving in formation
-- Score tracking and game over condition
-- Classic "arcade feel" using Python and Pygame
-
----
-
 ## 📦 Requirements
 
 - Python 3.x
@@ -46,6 +36,13 @@ cd alien-invasion
 ```bash
 python alien_invasion.py
 ```
+---
+## 🎮 Controls
+
+- Move the ship left and right using the arrow keys
+- Shoot bullets by pressing the spacebar
+- Quit by pressing Q
+
 ---
 
 ## 🙌 Acknowledgments
