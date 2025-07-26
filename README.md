@@ -1,6 +1,6 @@
-# 👾 Alien Invasion (Pygame Edition)
+# 👾 Alien Invasion
 
-A classic arcade-style shooting game built with [Pygame](https://www.pygame.org/). You control a spaceship and try to shoot down waves of aliens before they reach the bottom of the screen.
+A simple arcade-style shooting game built with [Pygame](https://www.pygame.org/). You control a spaceship and try to shoot down waves of aliens before they reach the bottom of the screen.
 
 ---
 
@@ -14,16 +14,6 @@ A classic arcade-style shooting game built with [Pygame](https://www.pygame.org/
 
 ---
 
-## 🎮 Features
-
-- Player-controlled spaceship with left/right movement
-- Bullet shooting system with collision detection
-- Multiple rows of alien enemies moving in formation
-- Score tracking and game over condition
-- Classic "arcade feel" using Python and Pygame
-
----
-
 ## 📦 Requirements
 
 - Python 3.x
@@ -34,17 +24,28 @@ A classic arcade-style shooting game built with [Pygame](https://www.pygame.org/
 ```bash
 pip install pygame
 ```
+---
 
-🚀 Getting Started
-Clone the repository
+## 🚀 Getting Started
+### Clone the repository
 ```bash
 git clone https://github.com/Rexthedog28/alien-invasion.git
 cd alien-invasion
 ```
-Run the Game
+### Run the Game
 ```bash
 python alien_invasion.py
 ```
-🙌 Acknowledgments
+---
+## 🎮 Controls
+
+- Move the ship left and right using the arrow keys
+- Shoot bullets by pressing the spacebar
+- Quit by pressing Q
+
+---
+
+## 🙌 Acknowledgments
 Inspired by the Alien Invasion project from Python Crash Course by Eric Matthes, with personal additions and improvements.
 
+---
