@@ -34,6 +34,7 @@ A classic arcade-style shooting game built with [Pygame](https://www.pygame.org/
 ```bash
 pip install pygame
 ```
+---
 
 ##🚀 Getting Started
 ###Clone the repository
@@ -45,6 +46,9 @@ cd alien-invasion
 ```bash
 python alien_invasion.py
 ```
+---
+
 ##🙌 Acknowledgments
 Inspired by the Alien Invasion project from Python Crash Course by Eric Matthes, with personal additions and improvements.
 
+---
