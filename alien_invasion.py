@@ -60,7 +60,7 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 with open('high_score.txt', 'w') as high_score_file:
-                    high_score_file.write(self.stats.high_score)  
+                    high_score_file.write(str(self.stats.high_score))  
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
