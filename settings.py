@@ -19,6 +19,8 @@ class Settings:
 
         # Alien settings
         self.fleet_drop_speed = 10
+        self.alien_bullet_color = (0,250,154)
+        self.alien_bullet_height = 25
 
         # How quickly the game speeds up
         self.speedup_scale = 1.2
@@ -33,6 +35,7 @@ class Settings:
         self.ship_speed = 1.8
         self.bullet_speed = 2.8
         self.alien_speed = 1.3
+        self.alien_bullet_speed = 2.8
 
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
@@ -45,5 +48,6 @@ class Settings:
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+        self.alien_bullet_speed *= self.speedup_scale
 
         self.alien_points =  int(self.alien_points * self.score_scale) 

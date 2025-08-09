@@ -3,6 +3,7 @@ from time import sleep
 
 import pygame
 
+from alien_bullet import AlienBullet
 from settings import Settings
 from game_stats import GameStats
 from scoreboard import Scoreboard
@@ -32,6 +33,7 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
+        self.alien_bullets = pygame.sprite.Group()
 
         self._create_fleet()
 
@@ -51,6 +53,7 @@ class AlienInvasion:
                 self.ship.update()
                 self._update_bullets()
                 self._update_aliens()
+                self._update_alien_bullets()
             
             self._update_screen()
             self.clock.tick(60)
@@ -85,6 +88,7 @@ class AlienInvasion:
 
                     # Get rid of any remaining bullets and aliens.
                     self.bullets.empty()
+                    self.alien_bullets.empty()
                     self.aliens.empty()
 
                     # Create a new fleet and center the ship.
@@ -124,6 +128,23 @@ class AlienInvasion:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
 
+    def _fire_alien_bullet(self):
+        """Create a new alien bullet and add it to the alien bullets group."""
+        new_alien_bullet = AlienBullet(self)
+        self.alien_bullets.add(new_alien_bullet)
+
+    def _update_alien_bullets(self):
+        """Update position of alien bullets and get rid of old alien bullets."""
+        # Update bullets position.
+        self.alien_bullets.update()
+
+        # Get rid of bullets that have disappeared.
+        for alien_bullet in self.alien_bullets.copy():
+            if alien_bullet.rect.top >= self.settings.screen_height:
+                self.alien_bullets.remove(alien_bullet)
+        
+        self._check_alien_bullet_ship_colisions()
+
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets."""
         # Update bullets position.
@@ -151,20 +172,26 @@ class AlienInvasion:
         if not self.aliens:
             self._new_level()
 
+    def _check_alien_bullet_ship_colisions(self):
+        if pygame.sprite.spritecollideany(self.ship, self.alien_bullets):
+           self._ship_hit()
+
     def _new_level(self):
         # Destroy existing bullets and create new fleet.
             self.bullets.empty()
+            self.alien_bullets.empty()
             self._create_fleet()
             self.settings.increase_spped()
 
             # Increase level
             self.stats.level += 1
-            self.sb.prep_level()
+            self.sb._prep_level()
 
     def _update_aliens(self):
        """Check if the fleet is at an edge, then update positions."""
        self._check_fleet_edges()
        self.aliens.update()
+
 
        # Look for alien ship collision.
        if pygame.sprite.spritecollideany(self.ship, self.aliens):
@@ -178,11 +205,12 @@ class AlienInvasion:
         if self.stats.ships_left > 0:
             # Decrement ships_left.
             self.stats.ships_left -= 1
-            self.sb.prep_ships()
+            self.sb._prep_ships()
 
             # Get rid of any remaining bullets and aliens.
             self.bullets.empty()
             self.aliens.empty()
+            self.alien_bullets.empty()
 
             # Create a new fleet and center the ship.
             self._create_fleet()
@@ -223,6 +251,7 @@ class AlienInvasion:
         """Respond appropriately if any aliens have reached an edge."""
         for alien in self.aliens.sprites():
             if alien.check_edges():
+                self._fire_alien_bullet()
                 self._change_fleet_direction()
                 break
  
@@ -235,8 +264,13 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
+
         for bullet in self.bullets:
             bullet.draw_bullet() 
+        
+        for alien_bullet in self.alien_bullets:
+            alien_bullet.draw_alien_bullet()
+            
         self.ship.blitme()
         self.aliens.draw(self.screen)
 
